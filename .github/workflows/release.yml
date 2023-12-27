@@ -54,24 +54,32 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Upload esp8266 realease
         uses: actions/upload-release-asset@v1
         with:
           name: mitsubishi2MQTT_ESP8266-ESP01.bin
           path: ${{ github.workspace }}/app/mitsubishi2MQTT_ESP8266-ESP01.bin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload WEMOS_D1_Mini release
         uses: actions/upload-release-asset@v1
         with:
           name: mitsubishi2MQTT_WEMOS_D1_Mini.bin
           path: ${{ github.workspace }}/app/mitsubishi2MQTT_WEMOS_D1_Mini.bin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload PIO esp32dev realease
         uses: actions/upload-release-asset@v1
         with:
           name: mitsubishi2MQTT_ESP32DEV_PIO.bin
           path: ${{ github.workspace }}/app/mitsubishi2MQTT_ESP32DEV_PIO.bin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: esp-idf build
         uses: espressif/esp-idf-ci-action@v1
@@ -83,9 +91,11 @@ jobs:
       - name: Rename IDF bin file
         run: |
           sudo mv ${{ github.workspace }}/app/build/mitsubishi2MQTT.bin ${{ github.workspace }}/app/build/mitsubishi2MQTT_ESP32DEV_IDF.bin
-      - name: Upload ESP32DEV_IDF artifacts
+      - name: Upload ESP32DEV_IDF release
         uses: actions/upload-release-asset@v1
         with:
           name: mitsubishi2MQTT_ESP32DEV_IDF.bin
           path: |
             ${{ github.workspace }}/app/build/mitsubishi2MQTT_ESP32DEV_IDF.bin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
