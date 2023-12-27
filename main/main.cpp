@@ -3257,8 +3257,8 @@ String getCurrentTime()
   struct tm timeinfo;
 
   time(&now);
-  // Set timezone to Vietnam Standard Time
-  setenv("TZ", "ICT-7", 1);
+  // Set timezone to Central European Time
+  setenv("TZ", "UTC-1", 1);
   tzset();
 
   localtime_r(&now, &timeinfo);
