@@ -60,24 +60,30 @@ jobs:
       - name: Upload esp8266 realease
         uses: actions/upload-release-asset@v1
         with:
-          name: mitsubishi2MQTT_ESP8266-ESP01.bin
-          path: ${{ github.workspace }}/app/mitsubishi2MQTT_ESP8266-ESP01.bin
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./bin/mitsubishi2MQTT_ESP8266-ESP01.bin
+          asset_name: mitsubishi2MQTT_inESP8266-ESP01.bin
+          asset_content_type: application/bin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload WEMOS_D1_Mini release
         uses: actions/upload-release-asset@v1
         with:
-          name: mitsubishi2MQTT_WEMOS_D1_Mini.bin
-          path: ${{ github.workspace }}/app/mitsubishi2MQTT_WEMOS_D1_Mini.bin
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./bin/mitsubishi2MQTT_WEMOS_D1_Mini.bin
+          asset_name: mitsubishi2MQTT_WEMOS_D1_Mini.bin
+          asset_content_type: application/bin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload PIO esp32dev realease
         uses: actions/upload-release-asset@v1
         with:
-          name: mitsubishi2MQTT_ESP32DEV_PIO.bin
-          path: ${{ github.workspace }}/app/mitsubishi2MQTT_ESP32DEV_PIO.bin
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./bin/mitsubishi2MQTT_ESP32DEV_PIO.bin
+          asset_name: mitsubishi2MQTT_ESP32DEV_PIO.bin
+          asset_content_type: application/bin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -94,8 +100,8 @@ jobs:
       - name: Upload ESP32DEV_IDF release
         uses: actions/upload-release-asset@v1
         with:
-          name: mitsubishi2MQTT_ESP32DEV_IDF.bin
-          path: |
-            ${{ github.workspace }}/app/build/mitsubishi2MQTT_ESP32DEV_IDF.bin
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./bin/mitsubishi2MQTT_ESP32DEV_IDF.bin
+          asset_name: mitsubishi2MQTT_ESP32DEV_IDF.bin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
