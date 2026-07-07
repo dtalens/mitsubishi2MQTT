@@ -241,7 +241,7 @@ void setup()
         }
         if (!isSecureEnable()) {
             server.on("/upgrade", handleUpgrade);
-            server.on("/upload", WebRequestMethod::HTTP_ANY, handleUploadDone, handleUploadLoop);
+            server.on("/upload", HTTP_GET | HTTP_POST, handleUploadDone, handleUploadLoop);
 #ifdef ESP32
             Update.onProgress(otaUpdateProgress);
 #endif
